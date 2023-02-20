@@ -29,6 +29,27 @@ class Database
         return false;
     }
 
+    /** Create new user query */
+    public function signup($query = "" , $params = [])
+    {
+        try {
+ 
+            $stmt = $this->executeStatement( $query , $params );
+            $result = $stmt->get_result();				
+            $stmt->close();
+            echo $result;
+            return $result;
+
+        } catch(Exception $e) {
+echo $e;
+            throw New Exception( $e->getMessage() );
+        }
+        
+        return false;
+    }
+
+
+
 
     /** Execute statements */
     private function executeStatement($query = "" , $params = [])

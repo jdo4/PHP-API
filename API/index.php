@@ -26,7 +26,14 @@ if ((isset($uri[4]) && $uri[4] != 'user') || !isset($uri[5])) {
 require PROJECT_ROOT_PATH . "/Controller/Api/UserController.php";
 //echo (PROJECT_ROOT_PATH);
 $objFeedController = new UserController();
-$strMethodName = $uri[5] . 'Action'; //e.g. see listAction
+if($uri[5] == "signup"){
+    $strMethodName = $uri[5]; //e.g. see listAction
+}else if($uri[5] == "login"){
+    $strMethodName = $uri[5]; //e.g. see listAction
+}else{
+    $strMethodName = $uri[5] . 'Action'; //e.g. see listAction
+}
+
 
 // Call the controller action
 $objFeedController->{$strMethodName}();
