@@ -1,20 +1,26 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Introduction - Let’s try to understand the project structure.
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Entry Point
+index.php: the entry-point of our application. It will act as a front-controller of our application.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+# Configuration
+inc/config.php: holds the configuration information of our application. Mainly, it will hold the database credentials.
+inc/bootstrap.php: used to bootstrap our application by including the necessary files.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# DB access layer
+Model/Database.php: the database access layer which will be used to interact with the underlying MySQL database.
+Model/UserModel.php: the User model file which implements the necessary methods to interact with the users table in the MySQL database.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# Utility for end user
+Controller/Api/BaseController.php: a base controller file which holds common utility methods.
+Controller/Api/UserController.php: the User controller file which holds the necessary application code to entertain REST API calls.
+
+# DB
+$use rest_api_demo;
+$CREATE TABLE `users` (
+  `user_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `user_email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `user_status` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
