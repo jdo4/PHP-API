@@ -38,7 +38,8 @@ if($uri[5] == "signup"){
     $strMethodName = $uri[5]; //e.g. see listAction
 }
 else{
-    $strMethodName = $uri[5] . 'Action'; //e.g. see listAction
+    
+    $strMethodName = $uri[5]; //e.g. see listAction
 }
 
 

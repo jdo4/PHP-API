@@ -48,6 +48,28 @@ class UserModel extends Database
 
     }
 
+    /* Gets the users from the DB tables*/
+    public function getCartDetail($limit)
+    {
+        return $this->select("SELECT * FROM Cart ORDER BY id ASC LIMIT ?", ["i", $limit]);
+    }
+
+    public function updateCartDetail($id, $userid, $quantities)
+    {
+        return $this->update("UPDATE Cart SET quantities='$quantities' WHERE id = '$id' AND user_id = '$userid'");
+    }
+
+    public function insertCartDetail($productid, $userid, $quantities, $user)
+    {
+        return $this->insert("INSERT into Cart(products_id, user_id, quantities) 
+        values('$productid','$userid','$quantities')");
+    }
+
+    public function deleteCartDetail($cartid)
+    {
+        return $this->delete("DELETE FROM Cart WHERE id = '$cartid'");
+    }
+
 
 
 }

@@ -15,6 +15,49 @@ class Database
         }			
     }
 
+    /** Update query */
+    public function update($query = "" , $params = [])
+    {
+        try {
+            $stmt = $this->executeStatement( $query , $params );
+            $result = $stmt->get_result();				
+            $stmt->close();
+            return $result;
+        } catch(Exception $e) {
+            throw New Exception( $e->getMessage() );
+        }
+        return false;
+    }
+
+     /** Delete query */
+     public function delete($query = "" , $params = [])
+     {
+         try {
+             $stmt = $this->executeStatement( $query , $params );
+             $result = $stmt->get_result();				
+             $stmt->close();
+             return $result;
+         } catch(Exception $e) {
+            echo $e;
+             throw New Exception( $e->getMessage() );
+         }
+         return false;
+     }
+
+    /** Insert query */
+    public function insert($query = "" , $params = [])
+    {
+        try {
+            $stmt = $this->executeStatement( $query , $params );
+            $result = $stmt->get_result();				
+            $stmt->close();
+            return $result;
+        } catch(Exception $e) {
+            throw New Exception( $e->getMessage() );
+        }
+        return false;
+    }
+
     /** Select query */
     public function select($query = "" , $params = [])
     {
@@ -24,6 +67,7 @@ class Database
             $stmt->close();
             return $result;
         } catch(Exception $e) {
+            echo $e;
             throw New Exception( $e->getMessage() );
         }
         return false;
