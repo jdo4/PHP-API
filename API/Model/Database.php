@@ -48,6 +48,29 @@ echo $e;
         return false;
     }
 
+    /** User login query */
+    public function login($query = "" , $params = [])
+    {
+        try {
+ 
+            $stmt = $this->executeStatement( $query , $params );
+            $result = $stmt->get_result();				
+            $stmt->close();
+
+                if(mysqli_fetch_row($result) > 0){
+                    return "success";
+                }else{
+                    return "Fail";
+                }
+                return "Fail";
+
+        } catch(Exception $e) {
+echo $e;
+            throw New Exception( $e->getMessage() );
+        }
+        return false;
+    }
+
 
 
 

@@ -30,7 +30,14 @@ if($uri[5] == "signup"){
     $strMethodName = $uri[5]; //e.g. see listAction
 }else if($uri[5] == "login"){
     $strMethodName = $uri[5]; //e.g. see listAction
-}else{
+} else if($uri[5] == "products"){
+    $strMethodName = $uri[5]; //e.g. see listAction
+}else if($uri[5] == "comments"){
+    $strMethodName = $uri[5]; //e.g. see listAction
+}else if($uri[5] == "deletecomments"){
+    $strMethodName = $uri[5]; //e.g. see listAction
+}
+else{
     $strMethodName = $uri[5] . 'Action'; //e.g. see listAction
 }
 
